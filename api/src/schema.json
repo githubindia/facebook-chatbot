@@ -1,0 +1,19 @@
+{
+    "intentSchema" : [
+        {
+            "intent" : "Greeting",
+            "utterances" : ["hi", "hello", "Is anyone there?", "Is anyone there?"],
+            "responses" : ["Hello there! how can I help you", "May I help you"]
+        },
+        {
+            "intent" : "payments",
+            "utterances" : ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
+            "responses" : ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+        },
+        {
+            "intent": "goodbye",
+            "utterances": ["Bye", "See you later", "Goodbye"],
+            "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+        }
+    ]
+}

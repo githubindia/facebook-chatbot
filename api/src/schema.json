@@ -2,7 +2,7 @@
     "intentSchema" : [
         {
             "intent" : "Greeting",
-            "utterances" : ["hi", "hello", "Is anyone there?", "Is anyone there?"],
+            "utterances" : ["hi", "hello", "Is anyone there?", "hey"],
             "responses" : ["Hello there! how can I help you", "May I help you"]
         },
         {

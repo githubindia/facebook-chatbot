@@ -6,7 +6,7 @@ module.exports = (req, res) => {
         req.body.entry.forEach(entry => {
             entry.messaging.forEach(event => {
                 if (event.message && event.message.text) {
-                    db.insertRecord(event, function(res){})
+                    //db.insertRecord(event, function(res){})
                     processMessage(event);
                 }
             });

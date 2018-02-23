@@ -48,8 +48,8 @@ module.exports = {
         connection.query('insert into message_details set sender_id = ?, recipient_id = ?', [body.sender.id, body.recipient.id], function(err, rows, fields) {
             if (err) {
                 logger.error("DB ERROR", err);
-                var response = processor.dbErrorResponse();
-                return callback(response);
+                //var response = processor.dbErrorResponse();
+                return callback(err);
             }
             return callback(rows);   
         });

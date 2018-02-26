@@ -13,7 +13,7 @@
         {
             "intent": "goodbye",
             "utterances": ["Bye", "See you later", "Goodbye"],
-            "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+            "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon.", "Bye"]
         }
     ]
 }

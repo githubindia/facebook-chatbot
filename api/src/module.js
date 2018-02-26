@@ -9,8 +9,8 @@ var keyRegex = RegExp(/\b(this|next|last)\b/);
 var afterKeyRegex = RegExp(/\b(week|month|year|monday|tuesday|wednesday|thursday|friday|saturday|sunday|quarter)\b/);
 var floatRegex = RegExp(/^([0-9])[.]([0-9])/);
 var numRegex = RegExp(/^(\d+$)|([1](st)|[2](nd)|[3](rd)|[4-9](th)|[0-9]{2}(th))/);
-
-var dateRegex = RegExp(/^(0[1-9]|[12][0-9]|3[01]|[0-9])[- /.](0[1-9]|1[012]|[1-9])[- /.](((19|20)\d\d)|[1-2][0-9])$/); // dd/MM/yyyy
+// var dateRegex = RegExp(/^(0[1-9]|[12][0-9]|3[01]|[0-9])[- /.](0[1-9]|1[012]|[1-9])[- /.](((19|20)\d\d)|[1-2][0-9])$/);
+var dateRegex = RegExp(/^(0[1-9]|[12][0-9]|3[01]|[0-9])[- /.](0[1-9]|1[012]|[1-9])[- /.](((20)[1-2][0-9])|[1-2][0-9])$/); // dd/MM/yyyy
 var dateRegex2 = RegExp(/^(0[1-9]|1[012]|[1-9])[- /.](0[1-9]|[12][0-9]|3[01]|[0-9])[- /.](((19|20)\d\d)|[1-2][0-9])$/) // mm/dd/yyyy
 var dateRegex3 = RegExp(/^(((19|20)\d\d)|[1-2][0-9])([- /.])(0[1-9]|1[012]|[1-9])[- /.](0[1-9]|[12][0-9]|3[01]|[0-9])$/); // yyyy/MM/dd
 var dateRegex4 = RegExp(/^(0[1-9]|1[012]|[1-9])[- /.](((19|20)\d\d)|[1-2][0-9])$/);
@@ -26,12 +26,11 @@ module.exports.regexCalc =  function (str, callback) {
     var tokenizer = new natural.TreebankWordTokenizer();
     var arr = tokenizer.tokenize(str);
 
-
     arr.forEach(function(element, i) {
         while (numRegex.test(element)) {
             var index = i + 1;
             if(monthShortRegex.test(arr[index])) {
-                callback(element +" "+ arr[index], "Date");
+                callback(element + " " + arr[index], "Date");
             }
             if(monthLongRegex.test(arr[index])) {
                 //console.log(element + " " + arr[index]);
@@ -69,9 +68,9 @@ module.exports.regexCalc =  function (str, callback) {
             if (name == element.toLowerCase()) {
                 dayOfWeek = i;
                 var newDate = date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-                var newFormat = new Date(newDate);
+                var newFormat = new Date(newDdate);
                 var dt = moment(newDate).format('LL');
-                callback(dt, "Date")
+                callback(dt, "Date");
             }
         })
         if (key == 'next' && name == 'month') {
@@ -122,7 +121,9 @@ module.exports.regexCalc =  function (str, callback) {
 
     arr.forEach(function(element){
         if (dateRegex.test(element) || dateRegex2.test(element) || dateRegex3.test(element) || dateRegex4.test(element) || dateRegex5.test(element)) {
-            callback(element, "Date");
+            var date = new Date(element);
+            var newDate = moment(date).format('LL');
+            callback(newDate, "Date");
         }
     });
 
@@ -130,7 +131,6 @@ module.exports.regexCalc =  function (str, callback) {
         var date = new Date();
         var month = date.getMonth() + 1;
         var year = date.getFullYear();
-        
         if(year1 != null) {
             if (quarter == 2 || quarter == 3) {
                 var newDate = new Date(year1, (3 * quarter) - 1, + "30");
@@ -147,17 +147,17 @@ module.exports.regexCalc =  function (str, callback) {
             var dt = moment(date).format('LL');
             callback(dt, "Date");
             }
-            if (Math.ceil(month / 3) ==2) {
+            if (Math.ceil(month / 3) == 2) {
                 var date = new Date(year + "," + (6 + addMonth) + ", 30");
                 var dt = moment(date).format('LL');
                 callback(dt, "Date");
             }
-            if (Math.ceil(month / 3) ==3) {
+            if (Math.ceil(month / 3) == 3) {
                 var date = new Date(year + "," + (9 + addMonth) + "," + (30 + addDay));
                 var dt = moment(date).format('LL');
                 callback(dt, "Date");
             }
-            if (Math.ceil(month / 3) ==4) {
+            if (Math.ceil(month / 3) == 4) {
                 var date = new Date((year + addYear) + "," + (12 + addMonth) + ", 31");
                 var dt = moment(date).format('LL');
                 callback(dt, "Date");  

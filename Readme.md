@@ -1,1 +1,1 @@
-# This is Facebook Echo Bot.
+# This is a Facebook Bot.

@@ -9,12 +9,12 @@ module.exports = (event) => {
     const message = event.message.text;
     var response = [];
     var reply;
+    var flag = false;
     
     schema.intentSchema.forEach(function(element, i) {
-        element.utterances.forEach(function(element1, j){
+        element.utterances.forEach(function(element1, j) {
             //console.log("Score : "+natural.JaroWinklerDistance(message, element1));
             if (natural.JaroWinklerDistance(message, element1) >= 0.75) {
-                
                 response.push(element.responses[Math.floor(Math.random() * Math.floor(j))]);
             }
         })
@@ -23,19 +23,19 @@ module.exports = (event) => {
     if (response.length !=0) {
         reply = response[Math.floor(Math.random())];
         console.log(reply);
+        flag = true;
     } else  if (response.length == 0) {
-        //console.log(reply);
+        console.log(reply);
         calc.regexCalc(message, function(res, type){
             response.push(res + ": " + type);
         })
     }
     if (response.length == 0) {
         reply = "Sorry! I didn't get that";
-    } else {
+    } else if (!flag) {
         reply = response[0];
+        console.log(reply);
     }
-
-    //reply = "Sorry! I didn't get that";
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',

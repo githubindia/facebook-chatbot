@@ -25,7 +25,7 @@ module.exports = (event) => {
         flag = true;
     } else  if (response.length == 0) {
         calc.regexCalc(message, function(res, type){
-            response = res;
+            //response = res;
         });
     }
 

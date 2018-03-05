@@ -3,17 +3,23 @@
         {
             "intent" : "Greeting",
             "utterances" : ["hi", "hello", "Is anyone there?", "hey"],
-            "responses" : ["Hello there! how can I help you", "May I help you"]
+            "responses" : ["Hello there! how can I help you?", "May I help you?"],
+            "context": false,
+            "nlp":true
         },
         {
-            "intent" : "payments",
-            "utterances" : ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?" ],
-            "responses" : ["We accept VISA, Mastercard and AMEX", "We accept most major credit cards"]
+            "intent" : "NewIncidentRequest",
+            "utterances" : ["I want to create an incident request", "Create a new service request", "Can you make an new service request for me?" ],
+            "responses" : ["Please enter the description"],
+            "context": true,
+            "nlp":true
         },
         {
             "intent": "goodbye",
             "utterances": ["Bye", "See you later", "Goodbye"],
-            "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon.", "Bye"]
+            "responses": ["See you later, thanks for visiting!", "Have a nice day!", "Bye! Come back again soon.", "Bye!"],
+            "context": false,
+            "nlp":true
         }
     ]
 }

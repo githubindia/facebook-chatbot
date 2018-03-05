@@ -10,7 +10,7 @@ var port = process.env.PORT || 3000;
 app.use(express.static(__dirname));
 var accessLogStream = fs.createWriteStream(__dirname + '/api/logs/access.log', {flags: 'a'});
 app.use(morgan('common'));
-//app.use(morgan('common', {stream: accessLogStream})) //SWITCH LOG SAVE
+//app.use(morgan('common', {stream: accessLogStream})) //SWITCH LOG  SAVE
 
 /**
  * To support JSON-encoded bodies.

@@ -38,9 +38,6 @@ module.exports = (event) => {
     reply = response[0];
     
     // result.push({id: global.followUpSymptomId, choice_id: global.diagnosisSymptomStatus});
-    // if(intValue.type != "undefined"){
-    //     result.push("integer":intValue);
-    // }
 
     var out = request({
         url: 'https://graph.facebook.com/v2.6/me/messages',

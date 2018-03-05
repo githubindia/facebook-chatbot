@@ -2,7 +2,7 @@ const request = require('request');
 var schema = require('./schema.json');
 var natural = require('natural');
 var calc = require('./module.js');
-const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_TOKEN;
+const FACEBOOK_ACCESS_TOKEN = EAAc6hI7VvPwBANp3BZAgcztmOwZCUmHrhBvUi0EZAOn2Byhq6i2jjiqdIHUcNZBZADgj5HZAXpCzl962Nhi6ou23blwFOZCQosStTY3tGPZAzCxGkQAPgOdpjHSMxIqK5f2mUq8ovFZCveHwZAVbF6ZB4yqjlZCZCCpWvdnf0iTnbrUizmQZDZD;
 
 module.exports = (event) => {
     const senderId = event.sender.id;

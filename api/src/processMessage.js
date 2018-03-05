@@ -30,7 +30,7 @@ if(schema.intentSchema[1].context) {
     });
 } else {
     servicenow.logIncident(message, function(err, body){
-        reply = `Your incident has been created with the incident number ${body.result.number}`
+        response.push(`Your incident has been created with the incident number ${body.result.number}`);
         flag = true
     });
     schema.intentSchema[1].context = true
@@ -50,7 +50,7 @@ if(schema.intentSchema[1].context) {
         });
     }
 
-    if (response.length == 0 && !reply) {
+    if (response.length == 0) {
         reply = "Sorry! I didn't get that";
     } else if (!flag) {
         reply = response[0];

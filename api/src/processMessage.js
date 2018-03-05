@@ -49,7 +49,7 @@ if(schema.intentSchema[1].context) {
         });
     }
 
-    if (response.length == 0 && reply == undefined) {
+    if (response.length == 0 && !reply) {
         reply = "Sorry! I didn't get that";
     } else if (!flag) {
         reply = response[0];

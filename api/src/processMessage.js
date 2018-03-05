@@ -8,36 +8,41 @@ module.exports = (event) => {
     const senderId = event.sender.id;
     const message = event.message.text;
     var response = [];
-    var reply;
     var flag = false;
-    
+    var result = [];
+
     schema.intentSchema.forEach(function(element, i) {
         element.utterances.forEach(function(element1, j) {
             //console.log("Score : "+natural.JaroWinklerDistance(message, element1));
             if (natural.JaroWinklerDistance(message, element1) >= 0.75) {
                 response.push(element.responses[Math.floor(Math.random() * Math.floor(j))]);
             }
-        })
-    })
+        });
+    });
 
     if (response.length !=0) {
         reply = response[Math.floor(Math.random())];
-        console.log(reply);
         flag = true;
     } else  if (response.length == 0) {
-        console.log(reply);
         calc.regexCalc(message, function(res, type){
-            response.push(res + ": " + type);
-        })
+            response = res;
+        });
     }
+
     if (response.length == 0) {
         reply = "Sorry! I didn't get that";
     } else if (!flag) {
         reply = response[0];
-        console.log(reply);
+        //console.log(reply);
     }
+    reply = response[0];
+    
+    // result.push({id: global.followUpSymptomId, choice_id: global.diagnosisSymptomStatus});
+    // if(intValue.type != "undefined"){
+    //     result.push("integer":intValue);
+    // }
 
-    request({
+    var out = request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: { access_token: FACEBOOK_ACCESS_TOKEN },
         method: 'POST',
@@ -47,5 +52,10 @@ module.exports = (event) => {
                 "text" : reply
             }
         }
+    });
+
+    out.on('error', function(err) {
+            console.log("Timedout error");
+            console.log(err.message.code);
     });
 };

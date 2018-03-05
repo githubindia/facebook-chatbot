@@ -31,6 +31,7 @@ if(schema.intentSchema[1].context) {
 } else {
     servicenow.logIncident(message, function(err, body){
         reply = `Your incident has been created with the incident number ${body.result.number}`
+        flag = true
     });
     schema.intentSchema[1].context = true
 }

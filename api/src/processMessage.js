@@ -35,7 +35,6 @@ module.exports = (event) => {
         reply = response[0];
         //console.log(reply);
     }
-    reply = response[0];
     
     // result.push({id: global.followUpSymptomId, choice_id: global.diagnosisSymptomStatus});
 

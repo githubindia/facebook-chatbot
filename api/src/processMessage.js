@@ -22,8 +22,10 @@ if(schema.intentSchema[1].context) {
                 schemaResponse = element;
                 response.push(element.responses[Math.floor(Math.random() * Math.floor(j))]);
                 //console.log(element.context);
-                schema.intentSchema[1].context = false;
+                if(i == 1) {
+                    schema.intentSchema[1].context = false;
                 }
+            }
         });
     });
 } else {

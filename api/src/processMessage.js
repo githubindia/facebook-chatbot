@@ -6,7 +6,6 @@ var calc = require('./module.js');
 const FACEBOOK_ACCESS_TOKEN = "EAAc6hI7VvPwBANp3BZAgcztmOwZCUmHrhBvUi0EZAOn2Byhq6i2jjiqdIHUcNZBZADgj5HZAXpCzl962Nhi6ou23blwFOZCQosStTY3tGPZAzCxGkQAPgOdpjHSMxIqK5f2mUq8ovFZCveHwZAVbF6ZB4yqjlZCZCCpWvdnf0iTnbrUizmQZDZD";
 var servicenow = require('./servicenow.js');
 var async = require('async');
-var process = require('./process.js')
 
 module.exports = (event) => {
     const senderId = event.sender.id;

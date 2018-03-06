@@ -37,7 +37,7 @@ if(schema.intentSchema[1].context) {
         servicenow.logIncident(message, callback);
     })();
     //console.log("Service Now Response Obtained Outside Callback : "+serviceNowResponse.result.number)
-    response.push(`Service Now Response Obtained Outside Callback : ${serviceNowResponse.result.number}`);
+    response.push(`Your incident has been created with the incident number ${serviceNowResponse.result.number}.`);
     schema.intentSchema[1].context = true;
 }
 

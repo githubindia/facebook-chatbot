@@ -42,20 +42,23 @@ if(schema.intentSchema[1].context) {
 }
 
     if (response.length != 0) {
-        reply = response[Math.floor(Math.random())];
-        var out = request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: { access_token: FACEBOOK_ACCESS_TOKEN },
-            method: 'POST',
-            json: {
-                recipient: { id: senderId },
-                "message": {
-                    "text" : reply
-                }
-            }
-        });
-        out.on('error', function(err) {
-                console.log("Timedout error");
-        });
+        reply = response[Math.floor(Math.random())];   
+    } else {
+        reply = "Sorry! I didn't get that.";
     }
+
+    var out = request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: { access_token: FACEBOOK_ACCESS_TOKEN },
+        method: 'POST',
+        json: {
+            recipient: { id: senderId },
+            "message": {
+                "text" : reply
+            }
+        }
+    });
+    out.on('error', function(err) {
+            console.log("Timedout error");
+    });
 };

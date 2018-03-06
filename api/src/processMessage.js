@@ -50,9 +50,9 @@ if(schema.intentSchema[1].context) {
         });
     }
 
-    if (response.length == 0) {
+    if (response.length == 0 && !flag) {
         reply = "Sorry! I didn't get that";
-    } else if (!flag) {
+    } else if (flag) {
         reply = response[0];
         //console.log(reply);
     }

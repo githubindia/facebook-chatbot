@@ -3,7 +3,8 @@ var deasync=require('deasync');
 var schema = require('./schema.json');
 var natural = require('natural');
 var calc = require('./module.js');
-const FACEBOOK_ACCESS_TOKEN = "EAAc6hI7VvPwBANp3BZAgcztmOwZCUmHrhBvUi0EZAOn2Byhq6i2jjiqdIHUcNZBZADgj5HZAXpCzl962Nhi6ou23blwFOZCQosStTY3tGPZAzCxGkQAPgOdpjHSMxIqK5f2mUq8ovFZCveHwZAVbF6ZB4yqjlZCZCCpWvdnf0iTnbrUizmQZDZD";
+require('dotenv').config()
+const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_TOKEN;
 var servicenow = require('./servicenow.js');
 var async = require('async');
 
@@ -42,7 +43,7 @@ if(schema.intentSchema[1].context) {
 }
 
     if (response.length != 0) {
-        reply = response[Math.floor(Math.random())];   
+        reply = response[Math.floor(Math.random())];
     } else {
         reply = "Sorry! I didn't get that.";
     }
